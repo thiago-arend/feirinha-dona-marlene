@@ -1,6 +1,6 @@
 import { FruitInput } from '@/services/fruits-service';
 import { Fruit } from '@/repositories/fruits-repository';
-import fruits from '../../src/data/fruits'
+import fruits from '../../src/data/fruits';
 
 export function createFruitInputObject(name: string, price: number): FruitInput {
     const fruit: FruitInput = {
@@ -10,11 +10,12 @@ export function createFruitInputObject(name: string, price: number): FruitInput 
     return fruit;
 }
 
-export function insertFruit(name: string, price: number): void {
+export function insertFruit(name: string, price: number): Fruit {
     const fruit: Fruit = {
         id: fruits.length + 1,
         name,
         price
     }
     fruits.push(fruit);
+    return fruit;
 }
