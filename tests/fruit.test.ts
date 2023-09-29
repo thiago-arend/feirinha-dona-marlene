@@ -59,9 +59,11 @@ describe("testing GET /fruits", () => {
     });
 
     it("should return all fruits if no id is present", async () => {
-        const fruit = insertFruit("Carambola", 5.30);
+        insertFruit("Carambola", 5.30);
+        insertFruit("Banana", 5.30);
         const { status, body } = await api.get(`/fruits`);
         expect(status).toBe(200);
+        expect(body).toHaveLength(2);
         expect(body).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
